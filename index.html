@@ -124,6 +124,9 @@ main {
   margin-bottom: 0.9rem;
 }
 
+/* Bio title color variation for stlye */
+.about-bio .eyebrow { color: var(--text); }
+
 /* Work title */
 .work-title {
   font-family: 'Libre Franklin', sans-serif;
@@ -261,7 +264,11 @@ main {
   font-size: 1rem;
   line-height: 1.75;
   max-width: 52ch;
+  color: var(--text-dim);
 }
+
+/* Color sandwich swap to make more readible and congruent */
+.eyebrow:has(~ .upcoming-list) { color: var(--text); }
 
 .about-bio p { margin-bottom: 1.1rem; }
 
