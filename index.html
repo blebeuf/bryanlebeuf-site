@@ -195,6 +195,19 @@ main {
   display: block;
 }
 
+.figure .fig-itchio {
+  max-width: 552px;
+  background: var(--placeholder);
+  border: 1px solid var(--border);
+}
+
+.figure .fig-itchio iframe {
+  width: 100%;
+  height: 167px;
+  display: block;
+  border: 0;
+}
+
 .figure figcaption {
   font-size: 0.84rem;
   color: var(--text-dim);
@@ -568,6 +581,7 @@ const works = {
     figures: [
       { src: 'assets/works/HomeMovie1.jpg', caption: '<em>Home Movie</em>, Video Game Arcade, 2019. Installation view at the School of the Art Institute of Chicago, Sullivan Galleries, Chicago, IL, 2020. A repurposed arcade console from the SAIC MFA exhibition, redesigned as an archival object modeled after a machine from a former corner store on Detroit’s west side, marking a specific time and place.' },
       { video: '272990623', title: 'Home Movie, 2019, Video Game', caption: '' },
+      { itchio: '674310', itchioUrl: 'https://bryan-lebeuf.itch.io/home-movie', itchioTitle: 'Home Movie by Bryan LeBeuf', caption: '<em>Home Movie</em> is now available to download on itch.io.' },
       { src: 'assets/works/HomeMovie2.jpg', caption: 'Full view of the <em>Home Movie</em> arcade cabinet, including the customized keyboard modification used to navigate the work. The altered controls reference the improvised and site-specific nature of the original corner store machine that inspired the piece.' },
       { src: 'assets/works/HomeMovie3.jpg', caption: 'Development images from the reconstruction of Grand Boulevard and Euclid in <em>Home Movie</em>, 2019. The left side contains gathered visual references and archival research, while the right side shows reconstruction progress images created in Autodesk Maya. Many of the homes no longer exist, requiring the environments to be rebuilt through communal memory, oral histories, and contemporary photographs.' },
       { src: 'assets/works/HomeMovie4.jpg', caption: 'Still from the “memories” system displaying collected game vignettes in <em>Home Movie</em>. The in-game menu archives memories tied to specific neighborhoods on a map, reconstructing environments from Detroit’s largely abandoned west side. Each vignette visually connects memory, place, and community.' },
@@ -633,6 +647,8 @@ function renderFigures(figures) {
     if (f.video) {
       const title = (f.title || '').replace(/"/g, '&quot;');
       media = `<div class="fig-video"><iframe src="https://player.vimeo.com/video/${f.video}?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="${title}" loading="lazy"></iframe></div>`;
+    } else if (f.itchio) {
+      media = `<div class="fig-itchio"><iframe src="https://itch.io/embed/${f.itchio}?bg_color=0f0e0c&fg_color=F0DCCA&link_color=F38325&border_color=0f0e0c&border_width=0" height="167" loading="lazy">><a href="${f.itchioUrl || '#'}">${f.itchioTitle || ''}</a></iframe></div>`; /* make the widget style match the pages color design */
     } else if (f.src) {
       media = `<img class="fig-img" src="${f.src}" alt="${(f.alt || '').replace(/"/g, '&quot;')}" loading="lazy">`;
     } else {
@@ -695,6 +711,7 @@ function renderAbout() {
   const press = [
     { title: 'Travel the World From Home',                                                source: 'Hyperallergic',                href: 'https://hyperallergic.com/575351/travel-the-world-indie-video-games/' },
     { title: 'Travel the World From Home With These Immersive, Accessible Video Games',   source: 'blog.byjasonli.com',           href: 'https://blog.byjasonli.com/travel-the-world-from-home-with-these-immersive-accessible-video-games/' },
+    { title: 'Home Movie: The Official Player’s Guide',                                   source: 'Immerse',                      href: 'https://immerse.news/home-movie-the-official-players-guide-aebf8ebfe1f1' },
     { title: 'Playing With Reality',                                                      source: 'Immerse News',                 href: 'https://immerse.news/call-for-proposals-mayjune2021-4fc481b7184' },
     { title: 'The Frantic Desire for Almost Real',                                        source: 'Chicago Artists Coalition',    href: 'https://chicagoartistscoalition.org/events/the-frantic-desire-for-almost-real' },
     { title: 'Chicago New Media Artists for Racial Justice',                              source: 'itch.io',                      href: 'https://itch.io/b/536/chicago-new-media-artists-for-racial-justice' },
