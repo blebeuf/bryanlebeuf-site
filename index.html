@@ -208,6 +208,70 @@ main {
   border: 0;
 }
 
+.figure .fig-pub {
+  border: 1px solid var(--border);
+  padding: 1.75rem 2rem;
+  background: var(--bg-elev);
+}
+
+.figure .fig-pub .pub-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.6rem;
+}
+
+.figure .fig-pub .pub-title {
+  font-family: 'Libre Franklin', sans-serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--text);
+  margin-bottom: 0.35rem;
+  line-height: 1.2;
+}
+
+.figure .fig-pub .pub-meta {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.figure .fig-pub .pub-links {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.figure .fig-pub .pub-links a {
+  font-size: 0.82rem;
+  font-family: 'Libre Franklin', sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+
+.figure .fig-pub .pub-links a:hover { opacity: 0.65; }
+
+.figure .fig-download a {
+  display: inline-block;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 2px;
+  transition: opacity 0.2s;
+}
+
+.figure .fig-download a:hover { opacity: 0.65; }
+
 .figure figcaption {
   font-size: 0.84rem;
   color: var(--text-dim);
@@ -580,14 +644,17 @@ const works = {
     thumb: 'assets/thumbs/HomeMovie.jpg',
     figures: [
       { src: 'assets/works/HomeMovie1.jpg', caption: '<em>Home Movie</em>, Video Game Arcade, 2019. Installation view at the School of the Art Institute of Chicago, Sullivan Galleries, Chicago, IL, 2020. A repurposed arcade console from the SAIC MFA exhibition, redesigned as an archival object modeled after a machine from a former corner store on Detroit’s west side, marking a specific time and place.' },
+      { itchio: '674310', itchioUrl: 'https://bryan-lebeuf.itch.io/home-movie', itchioTitle: 'Home Movie by Bryan LeBeuf', caption: '' },
       { video: '272990623', title: 'Home Movie, 2019, Video Game', caption: '' },
-      { itchio: '674310', itchioUrl: 'https://bryan-lebeuf.itch.io/home-movie', itchioTitle: 'Home Movie by Bryan LeBeuf', caption: '<em>Home Movie</em> is now available to download on itch.io.' },
       { src: 'assets/works/HomeMovie2.jpg', caption: 'Full view of the <em>Home Movie</em> arcade cabinet, including the customized keyboard modification used to navigate the work. The altered controls reference the improvised and site-specific nature of the original corner store machine that inspired the piece.' },
       { src: 'assets/works/HomeMovie3.jpg', caption: 'Development images from the reconstruction of Grand Boulevard and Euclid in <em>Home Movie</em>, 2019. The left side contains gathered visual references and archival research, while the right side shows reconstruction progress images created in Autodesk Maya. Many of the homes no longer exist, requiring the environments to be rebuilt through communal memory, oral histories, and contemporary photographs.' },
       { src: 'assets/works/HomeMovie4.jpg', caption: 'Still from the “memories” system displaying collected game vignettes in <em>Home Movie</em>. The in-game menu archives memories tied to specific neighborhoods on a map, reconstructing environments from Detroit’s largely abandoned west side. Each vignette visually connects memory, place, and community.' },
       { video: '309790602', title: 'Home Movies [Attract Mode]', caption: '' },
       { src: 'assets/works/HomeMovie5.jpg', caption: 'Screenshot from the first vignette in <em>Home Movie</em>, 2019. This scene from the “Devil’s Night” vignette functions as both interactive narration and documentation of Detroit’s layered histories. Each vignette is built from community memory tied to a specific space and moment in time.' },
-      { video: '692751267', title: 'Home Movie [Video 1]', caption: '' }
+      { video: '692751267', title: 'Home Movie [Video 1]', caption: '' },
+      { src: 'assets/works/HomeMoviePG1.jpg', caption: 'Home Movie: The Official Player\'s Guide, written by Duncan Bass, designed by Adnan F. Altunbozar.' },
+      { src: 'assets/works/HomeMoviePG2.jpg', caption: '' },
+      { download: { href: 'assets/Home%20Movie_The%20Official%20Players%20Guide.pdf', label: 'Download Player\'s Guide (PDF)' }, caption: '' }
     ]
   },
   'ivanhoe': {
@@ -648,7 +715,19 @@ function renderFigures(figures) {
       const title = (f.title || '').replace(/"/g, '&quot;');
       media = `<div class="fig-video"><iframe src="https://player.vimeo.com/video/${f.video}?badge=0&autopause=0&player_id=0&app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="${title}" loading="lazy"></iframe></div>`;
     } else if (f.itchio) {
-      media = `<div class="fig-itchio"><iframe src="https://itch.io/embed/${f.itchio}?bg_color=0f0e0c&fg_color=F0DCCA&link_color=F38325&border_color=0f0e0c&border_width=0" height="167" loading="lazy">><a href="${f.itchioUrl || '#'}">${f.itchioTitle || ''}</a></iframe></div>`; /* make the widget style match the pages color design */
+      media = `<div class="fig-itchio"><iframe src="https://itch.io/embed/${f.itchio}?bg_color=0f0e0c&fg_color=F0DCCA&link_color=F38325&border_color=0f0e0c&border_width=0" height="167" loading="lazy"><a href="${f.itchioUrl || '#'}">${f.itchioTitle || ''}</a></iframe></div>`;
+    } else if (f.pub) {
+      media = `<div class="fig-pub">
+        <div class="pub-eyebrow">Publication</div>
+        <div class="pub-title">${f.pub.title}</div>
+        <div class="pub-meta">${f.pub.meta}</div>
+        <div class="pub-links">
+          ${f.pub.readUrl ? `<a href="${f.pub.readUrl}" target="_blank" rel="noopener">Read on Immerse</a>` : ''}
+          ${f.pub.pdfUrl ? `<a href="${f.pub.pdfUrl}" target="_blank" rel="noopener">Download PDF</a>` : ''}
+        </div>
+      </div>`;
+    } else if (f.download) {
+      media = `<div class="fig-download"><a href="${f.download.href}" download target="_blank" rel="noopener">${f.download.label}</a></div>`;
     } else if (f.src) {
       media = `<img class="fig-img" src="${f.src}" alt="${(f.alt || '').replace(/"/g, '&quot;')}" loading="lazy">`;
     } else {
@@ -711,7 +790,6 @@ function renderAbout() {
   const press = [
     { title: 'Travel the World From Home',                                                source: 'Hyperallergic',                href: 'https://hyperallergic.com/575351/travel-the-world-indie-video-games/' },
     { title: 'Travel the World From Home With These Immersive, Accessible Video Games',   source: 'blog.byjasonli.com',           href: 'https://blog.byjasonli.com/travel-the-world-from-home-with-these-immersive-accessible-video-games/' },
-    { title: 'Home Movie: The Official Player’s Guide',                                   source: 'Immerse',                      href: 'https://immerse.news/home-movie-the-official-players-guide-aebf8ebfe1f1' },
     { title: 'Playing With Reality',                                                      source: 'Immerse News',                 href: 'https://immerse.news/call-for-proposals-mayjune2021-4fc481b7184' },
     { title: 'The Frantic Desire for Almost Real',                                        source: 'Chicago Artists Coalition',    href: 'https://chicagoartistscoalition.org/events/the-frantic-desire-for-almost-real' },
     { title: 'Chicago New Media Artists for Racial Justice',                              source: 'itch.io',                      href: 'https://itch.io/b/536/chicago-new-media-artists-for-racial-justice' },
