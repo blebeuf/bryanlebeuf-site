@@ -791,16 +791,17 @@ function renderWorkDetail(slug) {
 
 function renderAbout() {
   const press = [
-    { title: 'Travel the World From Home',                                                source: 'Hyperallergic',                href: 'https://hyperallergic.com/575351/travel-the-world-indie-video-games/' },
-    { title: 'Travel the World From Home With These Immersive, Accessible Video Games',   source: 'blog.byjasonli.com',           href: 'https://blog.byjasonli.com/travel-the-world-from-home-with-these-immersive-accessible-video-games/' },
-    { title: 'Playing With Reality',                                                      source: 'Immerse News',                 href: 'https://immerse.news/call-for-proposals-mayjune2021-4fc481b7184' },
-    { title: 'The Frantic Desire for Almost Real',                                        source: 'Chicago Artists Coalition',    href: 'https://chicagoartistscoalition.org/events/the-frantic-desire-for-almost-real' },
-    { title: 'Chicago New Media Artists for Racial Justice',                              source: 'itch.io',                      href: 'https://itch.io/b/536/chicago-new-media-artists-for-racial-justice' },
-    { title: 'Hello Neighbor — What is your name?',                                       source: 'Purple Window Gallery',        href: 'https://www.purplewindowgallery.com/post/hello-neighbor-record' },
-    { title: 'Reminiscing / Reinventing Graduate Conference',                             source: 'reminiscingreinventing.wordpress.com', href: 'https://reminiscingreinventing.wordpress.com/' },
-    { title: 'Wrath',                                                                     source: 'Future of Storytelling',       href: 'https://futureofstorytelling.org/story/wrath' },
-    { title: 'Follow Danny Brown, DTCHPLNES, and 3D Skeletons into Detroit [Music Video]', source: 'Vice',                        href: 'https://www.vice.com/en/article/53wemz/danny-brown-dtchplnes-3d-music-video' },
-    { title: 'Bryan LeBeuf in Detroit',                                                   source: 'Playground Detroit',           href: 'https://playgrounddetroit.com/tag/bryan-lebeuf/' }
+    { title: 'Travel the World From Home',                                                source: 'Hyperallergic',                         href: 'https://hyperallergic.com/575351/travel-the-world-indie-video-games/' },
+    { title: 'Travel the World From Home With These Immersive, Accessible Video Games',   source: 'blog.byjasonli.com',                    href: 'https://blog.byjasonli.com/travel-the-world-from-home-with-these-immersive-accessible-video-games/' },
+    { title: 'Home Movie: The Official Player’s Guide',                                   source: 'Immerse News',                          href: 'https://immerse.news/home-movie-the-official-players-guide-aebf8ebfe1f1' },
+    { title: 'Playing With Reality',                                                      source: 'Immerse News',                          href: 'https://immerse.news/call-for-proposals-mayjune2021-4fc481b7184' },
+    { title: 'The Frantic Desire for Almost Real',                                        source: 'Chicago Artists Coalition',             href: 'https://chicagoartistscoalition.org/events/the-frantic-desire-for-almost-real' },
+    { title: 'Chicago New Media Artists for Racial Justice',                              source: 'itch.io',                               href: 'https://itch.io/b/536/chicago-new-media-artists-for-racial-justice' },
+    { title: 'Hello Neighbor — What is your name?',                                       source: 'Purple Window Gallery',                 href: 'https://www.purplewindowgallery.com/post/hello-neighbor-record' },
+    { title: 'Reminiscing / Reinventing Graduate Conference',                             source: 'reminiscingreinventing.wordpress.com',  href: 'https://reminiscingreinventing.wordpress.com/' },
+    { title: 'Wrath',                                                                     source: 'Future of Storytelling',                href: 'https://futureofstorytelling.org/story/wrath' },
+    { title: 'Follow Danny Brown, DTCHPLNES, and 3D Skeletons into Detroit [Music Video]', source: 'Vice',                                 href: 'https://www.vice.com/en/article/53wemz/danny-brown-dtchplnes-3d-music-video' },
+    { title: 'Bryan LeBeuf in Detroit',                                                   source: 'Playground Detroit',                    href: 'https://playgrounddetroit.com/tag/bryan-lebeuf/' }
   ];
   const pressItems = press.map(p => `
     <li class="press-item">
